@@ -85,10 +85,13 @@
                                 <stop offset="0" stop-color="#00A63F"/>
                                 <stop offset="1" stop-color="#00C853"/>
                             </linearGradient>
+                            <clipPath id="chartReveal">
+                                <rect class="hero__chart-clip-rect" x="0" y="0" width="200" height="200"/>
+                            </clipPath>
                         </defs>
                         <polygon class="hero__chart-fill" points="20,150 70,40 130,90 180,30" fill="url(#g1)" opacity="0.12"/>
                         <line class="hero__chart-base" x1="20" y1="150" x2="180" y2="150" stroke="#00A63F" stroke-width="3" stroke-dasharray="6 6"/>
-                        <polygon class="hero__chart-line" points="20,150 70,40 130,90 180,30 180,150" fill="none" stroke="url(#g1)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+                        <polyline class="hero__chart-line" points="20,150 70,40 130,90 180,30 180,150" fill="none" stroke="url(#g1)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" clip-path="url(#chartReveal)"/>
                         <circle class="hero__chart-dot" style="--d:.55s" cx="70" cy="40" r="5" fill="#00A63F"/>
                         <circle class="hero__chart-dot" style="--d:.7s" cx="130" cy="90" r="5" fill="#00A63F"/>
                         <circle class="hero__chart-dot" style="--d:.85s" cx="180" cy="30" r="5" fill="#00A63F"/>
