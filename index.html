@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta name="google-site-verification" content="HfvGWTV3PidAbca_y2K1jz62IJVKgvn5Z9xsU5o7mjc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Точные кадастровые работы в Грозном и ЧР. Межевание, технические планы, исправление реестровых ошибок. Быстро, по закону. Звоните!">
@@ -18,14 +17,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    
 </head>
 <body>
 
     <header class="header" id="header">
-       <a href="#hero" class="logo" aria-label="SetCad — на главную">
-                <img src="logo.svg" alt="SetCad" style="height: 44px;">
+        <div class="container header__inner">
+            <a href="#hero" class="logo" aria-label="SetCad — на главную">
+                <span class="logo__mark" aria-hidden="true">
+                    <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="60" cy="60" r="18" fill="#00A63F"/>
+                        <ellipse cx="60" cy="60" rx="52" ry="20" fill="none" stroke="#00A63F" stroke-width="6" transform="rotate(-28 60 60)"/>
+                    </svg>
+                </span>
+                <span class="logo__text">Set<span class="logo__accent">Cad</span></span>
             </a>
 
             <nav class="nav" id="nav" aria-label="Основная навигация">
@@ -345,9 +349,15 @@
     <footer class="footer">
         <div class="container footer__inner">
             <div class="footer__brand">
-               <a href="#hero" class="logo logo--footer">
-    <img src="logo.svg" alt="SetCad" style="height: 36px;">
-</a>
+                <a href="#hero" class="logo logo--footer">
+                    <span class="logo__mark" aria-hidden="true">
+                        <svg viewBox="0 0 120 120" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="18" fill="#00A63F"/>
+                            <ellipse cx="60" cy="60" rx="52" ry="20" fill="none" stroke="#00A63F" stroke-width="6" transform="rotate(-28 60 60)"/>
+                        </svg>
+                    </span>
+                    <span class="logo__text">Set<span class="logo__accent">Cad</span></span>
+                </a>
                 <p class="footer__tagline">Профессиональные кадастровые работы в&nbsp;Грозном и&nbsp;Чеченской Республике.</p>
             </div>
 
