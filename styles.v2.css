@@ -624,3 +624,61 @@ ul, ol { list-style: none; }
 
 /* Выделение */
 ::selection { background: var(--green); color: #fff; }
+
+/* =========================================================
+   СТАТЬИ (страницы /articles/)
+   ========================================================= */
+.article__container { max-width: 760px; }
+
+.article__breadcrumbs {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    font-size: 0.85rem; color: var(--muted); margin-bottom: 28px;
+}
+.article__breadcrumbs a { color: var(--muted); transition: color .2s var(--ease); }
+.article__breadcrumbs a:hover { color: var(--green); }
+.article__breadcrumbs span[aria-current] { color: var(--body); }
+
+.article__head { max-width: 100%; margin-bottom: 32px; }
+.article__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--ink); margin: 8px 0 16px;
+}
+.article__lead { font-size: 1.1rem; color: var(--body); }
+
+.article__body h2 {
+    font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700; color: var(--ink);
+    margin: 40px 0 16px; letter-spacing: -0.01em;
+}
+.article__body h3 {
+    font-size: 1.1rem; font-weight: 700; color: var(--ink);
+    margin: 28px 0 10px;
+}
+.article__body p { margin-bottom: 16px; color: var(--body); }
+.article__body strong { color: var(--ink); font-weight: 700; }
+
+.article__list { margin: 0 0 16px; padding-left: 0; }
+.article__list li {
+    position: relative; padding-left: 26px; margin-bottom: 10px; color: var(--body);
+}
+.article__list li::before {
+    content: ""; position: absolute; left: 0; top: 9px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+}
+
+.article__cta {
+    background: var(--green-light); border-radius: var(--radius-lg);
+    padding: 32px; margin: 40px 0; text-align: left;
+}
+.article__cta h3 { margin-top: 0; color: var(--ink); }
+.article__cta p { color: var(--body); margin-bottom: 20px; }
+
+/* =========================================================
+   ВНУТРЕННИЕ ССЫЛКИ НА СТАТЬИ (карточки услуг)
+   ========================================================= */
+.service__link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px; font-size: 0.9rem; font-weight: 600;
+    color: var(--green); text-decoration: none;
+    transition: gap .2s var(--ease), color .2s var(--ease);
+}
+.service__link:hover { gap: 10px; color: var(--green-dark); }
