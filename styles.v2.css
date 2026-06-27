@@ -643,22 +643,22 @@ ul, ol { list-style: none; }
     font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15;
     letter-spacing: -0.02em; color: var(--ink); margin: 8px 0 16px;
 }
-.article__lead { font-size: 1.1rem; color: var(--body); }
+.article__lead { font-size: 1.1rem; line-height: 1.7; color: var(--body); }
 
 .article__body h2 {
     font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700; color: var(--ink);
-    margin: 40px 0 16px; letter-spacing: -0.01em;
+    margin: 48px 0 18px; letter-spacing: -0.01em;
 }
 .article__body h3 {
     font-size: 1.1rem; font-weight: 700; color: var(--ink);
-    margin: 28px 0 10px;
+    margin: 32px 0 12px;
 }
-.article__body p { margin-bottom: 16px; color: var(--body); }
+.article__body p { margin-bottom: 18px; line-height: 1.75; color: var(--body); }
 .article__body strong { color: var(--ink); font-weight: 700; }
 
-.article__list { margin: 0 0 16px; padding-left: 0; }
+.article__list { margin: 4px 0 24px; padding-left: 0; }
 .article__list li {
-    position: relative; padding-left: 26px; margin-bottom: 10px; color: var(--body);
+    position: relative; padding-left: 26px; margin-bottom: 12px; line-height: 1.6; color: var(--body);
 }
 .article__list li::before {
     content: ""; position: absolute; left: 0; top: 9px;
@@ -682,3 +682,49 @@ ul, ol { list-style: none; }
     transition: gap .2s var(--ease), color .2s var(--ease);
 }
 .service__link:hover { gap: 10px; color: var(--green-dark); }
+
+/* =========================================================
+   FAQ-АККОРДЕОН (статьи)
+   ========================================================= */
+.faq { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.faq__item {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--bg); overflow: hidden;
+}
+.faq__question {
+    list-style: none; cursor: pointer; padding: 18px 48px 18px 20px;
+    font-weight: 700; color: var(--ink); font-size: 1rem;
+    position: relative; user-select: none;
+    transition: background .2s var(--ease);
+}
+.faq__question:hover { background: var(--bg-soft); }
+.faq__question::-webkit-details-marker { display: none; }
+.faq__question::after {
+    content: ""; position: absolute; right: 20px; top: 50%;
+    width: 12px; height: 12px;
+    border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+    transform: translateY(-65%) rotate(45deg);
+    transition: transform .25s var(--ease);
+}
+.faq__item[open] .faq__question::after { transform: translateY(-35%) rotate(-135deg); }
+.faq__answer { padding: 0 20px 18px; color: var(--body); }
+.faq__answer p { margin-bottom: 0; }
+
+/* =========================================================
+   ПЛАВАЮЩАЯ КНОПКА «ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ» (статьи)
+   ========================================================= */
+.float-cta-text {
+    position: fixed; bottom: 20px; right: 88px; z-index: 90;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green); color: #fff; font-weight: 700; font-size: 0.92rem;
+    padding: 14px 20px; border-radius: 999px; text-decoration: none;
+    box-shadow: var(--shadow-green);
+    transition: transform .25s var(--ease), opacity .3s var(--ease), visibility .3s, background .2s var(--ease);
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+}
+.float-cta-text.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.float-cta-text:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+@media (max-width: 640px) {
+    .float-cta-text { right: 20px; bottom: 84px; padding: 12px 18px; font-size: 0.85rem; }
+}
