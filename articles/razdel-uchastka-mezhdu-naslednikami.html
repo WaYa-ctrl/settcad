@@ -278,33 +278,9 @@
         document.querySelectorAll('.faq__question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.closest('.faq__item');
-                const wrap = item.querySelector('.faq__answer-wrap');
                 const isOpen = item.classList.contains('is-open');
-
-                if (isOpen) {
-                    wrap.style.height = wrap.scrollHeight + 'px';
-                    item.classList.remove('is-open');
-                    btn.setAttribute('aria-expanded', 'false');
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => { wrap.style.height = '0px'; });
-                    });
-                } else {
-                    wrap.style.height = '0px';
-                    item.classList.add('is-open');
-                    btn.setAttribute('aria-expanded', 'true');
-                    const targetHeight = wrap.scrollHeight;
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => { wrap.style.height = targetHeight + 'px'; });
-                    });
-                }
-            });
-        });
-
-        document.querySelectorAll('.faq__answer-wrap').forEach(wrap => {
-            wrap.addEventListener('transitionend', (e) => {
-                if (e.propertyName !== 'height') return;
-                const item = wrap.closest('.faq__item');
-                if (item.classList.contains('is-open')) wrap.style.height = 'auto';
+                item.classList.toggle('is-open', !isOpen);
+                btn.setAttribute('aria-expanded', String(!isOpen));
             });
         });
     </script>
