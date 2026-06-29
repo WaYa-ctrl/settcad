@@ -193,26 +193,32 @@
                     <h2>Частые вопросы</h2>
 
                     <div class="faq">
-                        <details class="faq__item">
-                            <summary class="faq__question">Обязательно ли делать межевание в 2026 году?</summary>
-                            <div class="faq__answer">
-                                <p>С 1 марта 2025 года межевание фактически стало обязательным условием для сделок с землёй. Росреестр не регистрирует продажу, дарение или аренду участка без координат границ в ЕГРН. Само владение участком при этом не теряется, но распорядиться им без межевания нельзя.</p>
+                        <div class="faq__item">
+                            <button type="button" class="faq__question" aria-expanded="false">Обязательно ли делать межевание в 2026 году?</button>
+                            <div class="faq__answer-wrap">
+                                <div class="faq__answer">
+                                    <p>С 1 марта 2025 года межевание фактически стало обязательным условием для сделок с землёй. Росреестр не регистрирует продажу, дарение или аренду участка без координат границ в ЕГРН. Само владение участком при этом не теряется, но распорядиться им без межевания нельзя.</p>
+                                </div>
                             </div>
-                        </details>
+                        </div>
 
-                        <details class="faq__item">
-                            <summary class="faq__question">Сколько времени занимает межевание участка?</summary>
-                            <div class="faq__answer">
-                                <p>Для участка без споров с соседями весь процесс обычно занимает от 2 до 4 недель с момента выезда инженера до внесения границ в ЕГРН. Если требуется официальное уведомление через публикацию, срок может увеличиться на 30 дней.</p>
+                        <div class="faq__item">
+                            <button type="button" class="faq__question" aria-expanded="false">Сколько времени занимает межевание участка?</button>
+                            <div class="faq__answer-wrap">
+                                <div class="faq__answer">
+                                    <p>Для участка без споров с соседями весь процесс обычно занимает от 2 до 4 недель с момента выезда инженера до внесения границ в ЕГРН. Если требуется официальное уведомление через публикацию, срок может увеличиться на 30 дней.</p>
+                                </div>
                             </div>
-                        </details>
+                        </div>
 
-                        <details class="faq__item">
-                            <summary class="faq__question">Нужно ли присутствие соседей при межевании?</summary>
-                            <div class="faq__answer">
-                                <p>Нужно их согласие на установленные границы, но не обязательно личное присутствие при замерах. Согласование можно провести индивидуально, на общем собрании или через официальную публикацию, если соседей не удаётся найти.</p>
+                        <div class="faq__item">
+                            <button type="button" class="faq__question" aria-expanded="false">Нужно ли присутствие соседей при межевании?</button>
+                            <div class="faq__answer-wrap">
+                                <div class="faq__answer">
+                                    <p>Нужно их согласие на установленные границы, но не обязательно личное присутствие при замерах. Согласование можно провести индивидуально, на общем собрании или через официальную публикацию, если соседей не удаётся найти.</p>
+                                </div>
                             </div>
-                        </details>
+                        </div>
                     </div>
 
                 </div>
@@ -277,6 +283,41 @@
         };
         window.addEventListener('scroll', showFloatButtons, { passive: true });
         showFloatButtons();
+
+        document.querySelectorAll('.faq__question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq__item');
+                const wrap = item.querySelector('.faq__answer-wrap');
+                const isOpen = item.classList.contains('is-open');
+
+                if (isOpen) {
+                    // закрываем: фиксируем текущую (авто) высоту, затем в следующем кадре анимируем в 0
+                    wrap.style.height = wrap.scrollHeight + 'px';
+                    item.classList.remove('is-open');
+                    btn.setAttribute('aria-expanded', 'false');
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => { wrap.style.height = '0px'; });
+                    });
+                } else {
+                    // открываем: остаёмся на 0, в следующем кадре анимируем к реальной высоте контента
+                    wrap.style.height = '0px';
+                    item.classList.add('is-open');
+                    btn.setAttribute('aria-expanded', 'true');
+                    const targetHeight = wrap.scrollHeight;
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => { wrap.style.height = targetHeight + 'px'; });
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.faq__answer-wrap').forEach(wrap => {
+            wrap.addEventListener('transitionend', (e) => {
+                if (e.propertyName !== 'height') return;
+                const item = wrap.closest('.faq__item');
+                if (item.classList.contains('is-open')) wrap.style.height = 'auto';
+            });
+        });
     </script>
 </body>
 </html>
