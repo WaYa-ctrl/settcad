@@ -712,10 +712,11 @@ ul, ol { list-style: none; }
 .faq__item.is-open .faq__question::after { transform: translateY(-35%) rotate(-135deg); }
 .faq__answer-wrap {
     display: grid; grid-template-rows: 0fr; overflow: hidden;
-    transition: grid-template-rows .35s var(--ease);
+    visibility: hidden;
+    transition: grid-template-rows .35s var(--ease), visibility .35s var(--ease);
 }
-.faq__item.is-open .faq__answer-wrap { grid-template-rows: 1fr; }
-.faq__answer { min-height: 0; overflow: hidden; padding: 0 20px 18px; color: var(--body); }
+.faq__item.is-open .faq__answer-wrap { grid-template-rows: 1fr; visibility: visible; }
+.faq__answer { min-height: 0; min-width: 0; overflow: hidden; padding: 0 20px 18px; color: var(--body); }
 .faq__answer p { margin-bottom: 0; }
 
 /* =========================================================
