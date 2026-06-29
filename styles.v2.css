@@ -676,11 +676,12 @@ ul, ol { list-style: none; }
    ВНУТРЕННИЕ ССЫЛКИ НА СТАТЬИ (карточки услуг)
    ========================================================= */
 .service__link {
-    display: inline-flex; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 6px; width: fit-content;
     margin-top: 14px; font-size: 0.9rem; font-weight: 600;
     color: var(--green); text-decoration: none;
     transition: gap .2s var(--ease), color .2s var(--ease);
 }
+.service__link + .service__link { margin-top: 8px; }
 .service__link:hover { gap: 10px; color: var(--green-dark); }
 
 /* =========================================================
@@ -692,8 +693,10 @@ ul, ol { list-style: none; }
     background: var(--bg); overflow: hidden;
 }
 .faq__question {
+    display: block; width: 100%; text-align: left;
     list-style: none; cursor: pointer; padding: 18px 48px 18px 20px;
     font-weight: 700; color: var(--ink); font-size: 1rem;
+    font-family: inherit; background: none; border: none;
     position: relative; user-select: none;
     transition: background .2s var(--ease);
 }
@@ -704,9 +707,10 @@ ul, ol { list-style: none; }
     width: 12px; height: 12px;
     border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
     transform: translateY(-65%) rotate(45deg);
-    transition: transform .25s var(--ease);
+    transition: transform .3s var(--ease);
 }
-.faq__item[open] .faq__question::after { transform: translateY(-35%) rotate(-135deg); }
+.faq__item.is-open .faq__question::after { transform: translateY(-35%) rotate(-135deg); }
+.faq__answer-wrap { height: 0; overflow: hidden; transition: height .3s var(--ease); }
 .faq__answer { padding: 0 20px 18px; color: var(--body); }
 .faq__answer p { margin-bottom: 0; }
 
